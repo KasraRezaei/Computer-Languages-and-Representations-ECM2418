@@ -5,5 +5,5 @@ base8 n
 
 main :: IO()
 main 
-    = print(base8 647)
+    = print(base8 540)
 

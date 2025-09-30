@@ -6,4 +6,4 @@ base5 n
 main :: IO ()
 
 main
-    =print(base5 54)
+    =print(base5 540)
