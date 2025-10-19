@@ -1,5 +1,8 @@
-unmerge:: [(Int,char)] -> ([Int], [Char])
+unmerge:: [(Int,Char)] -> ([Int], [Char])
+unmerge [ ]= ([], [])
 unmerge ((a,b): abs) = (a:as, b:bs)
     where
         (as,bs) = unmerge abs
-        unmerge [l= ([], [])]
+
+main:: IO ()
+main = print( unmerge [(1,'a'), (2,'b'), (3,'c')] )

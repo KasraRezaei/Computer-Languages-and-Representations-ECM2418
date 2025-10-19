@@ -1,5 +1,10 @@
-foldr :: ( a -> b -> b ) -> b -> [ a ] -> b
-foldr f z []
+folder :: ( a -> b -> b ) -> b -> [ a ] -> b -- simple version (a ->(b ->(b))) -> b (an initial accumulator) -> [a] (input list) -> b (result)
+-- a function that takes three arguments (because there are 3 arrows before the final b) 
+-- (a ->(b ->(b))) a combining function as whole 
+folder f z []
   = z
-foldr f z ( x : xs )
-  = f x ( foldr f z xs )
+folder f z ( x : xs )
+  = f x ( folder f z xs )
+
+main:: IO ()
+main = print( folder (*) 1 [1,2,3] )

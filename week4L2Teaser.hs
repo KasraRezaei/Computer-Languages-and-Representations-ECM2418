@@ -15,14 +15,15 @@
 
 -- converts integers into strings
 
+import Data.List
 spell :: Int -> String
 spell n
   | t == 0    = units u
   | t == 1    = teens u
-  | u == 0 u ]    = tens t
+  | u == 0      = tens t
   | otherwise = foldr (++) [] [ tens t , "-" , units
     u] -- better option is to geting result of tens and units and joining them with - in the midel -> replace folder (++) [] with concat 
-    where (t , u ) = n ‘ divMod ‘ 10
+    where (t , u ) = n `divMod` 10
 
 
 units 0 = " zero "
@@ -78,10 +79,10 @@ selector n
 
 sames :: Int -> Int
 sames n
-  = length ( filter ( True ==) ( map2 (==) ns as ) ) --mapp same place word into True and not same into a false
-  where
-  ns = map spell [1.. n ]
-  as = sort ns
+  = length ( filter (True ==) ( map2 (==) ns as ) ) --mapp same place word into True and not same into a false
+    where
+    ns = map spell [1.. n ]
+    as = sort ns
 
 --higher order function
 map2 :: ( a -> b -> c ) -> [ a ] -> [ b ] -> [ c ] -- go as far as the shortest list
@@ -95,5 +96,6 @@ map2 f [] bs
 main :: IO ()
 main
   = print ( head ( filter selector generator ) )
+-- main = print (spell 2)
 
 --The result of this program is 87.
